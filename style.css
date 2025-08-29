@@ -1,0 +1,265 @@
+/* ---------- HOME PAGE STYLES ---------- */
+/* ----------- Header & Logo ----------- */
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* centers company name */
+  position: relative;
+  /* allows absolute positioning of logo */
+  padding: 15px 20px;
+  background: #f5f5f5;
+  border-bottom: 1px solid #ddd;
+}
+
+.logo {
+  position: absolute;
+  /* move logo to the left */
+  left: 20px;
+  /* distance from left edge */
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 50%;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.company-name {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #333;
+  font-family: Arial, sans-serif;
+  text-align: center;
+  /* ensures centered in header */
+}
+
+/* ---------- Doctor Name Heading ---------- */
+.home-page h1.doctor-title {
+  text-align: center;
+  font-size: 2rem;
+  margin: 25px 0 15px;
+  font-family: Arial, sans-serif;
+  color: #222;
+}
+
+/* ---------- Doctor Ordered List ---------- */
+.home-page ol.name-list {
+  list-style: none;
+  /* remove default numbers */
+  counter-reset: doctor-counter;
+  /* custom counter */
+  padding: 0;
+  margin: 20px auto;
+  max-width: 800px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.home-page ol.name-list li {
+  position: relative;
+  padding: 15px 20px 15px 55px;
+  /* space for counter and icon */
+  background: linear-gradient(135deg, #20c997, #63e6be);
+
+  color: #fff;
+  font-size: 1.2rem;
+  font-weight: bold;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+  counter-increment: doctor-counter;
+  /* increment counter */
+}
+
+.home-page ol.name-list li::before {
+  /*content: "🩺 " counter(doctor-counter) ".";*/
+  content: counter(doctor-counter) ".";
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.2rem;
+}
+
+.home-page ol.name-list li:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  background: linear-gradient(135deg, #20c997, #63e6be);
+
+}
+
+.home-page ol.name-list a {
+  color: #fff;
+  text-decoration: none;
+  display: block;
+}
+
+/* ---------- GALLERY PAGE STYLES ---------- */
+.gallery-page body {
+  overflow: hidden;
+  /* prevent vertical scroll */
+}
+
+.gallery-page .gallery-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.gallery-page .gallery {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  height: 100%;
+  width: 100%;
+}
+
+.gallery-page .slide {
+  flex: 0 0 100%;
+  height: 100vh;
+  scroll-snap-align: center;
+  position: relative;
+}
+
+.gallery-page .slide img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Gallery Buttons */
+.gallery-page .prev,
+.gallery-page .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  padding: 15px;
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+}
+
+.gallery-page .prev {
+  left: 20px;
+}
+
+.gallery-page .next {
+  right: 20px;
+}
+
+/* Header inside Gallery */
+.gallery-page .header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  padding: 12px 20px;
+  background: #f5f5f5;
+  border-bottom: 1px solid #ddd;
+  flex-wrap: nowrap;
+}
+
+.gallery-page .header h1 {
+  flex: 1;
+  text-align: center;
+  font-size: 1.6rem;
+  margin: 0;
+}
+
+/* Buttons */
+.gallery-page .home-btn,
+.gallery-page .fs-btn {
+  padding: 8px 14px;
+  border: none;
+  border-radius: 6px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background 0.3s;
+  white-space: nowrap;
+}
+
+.gallery-page .home-btn {
+  background: linear-gradient(135deg, #20c997, #63e6be);
+
+  color: white;
+}
+
+.gallery-page .home-btn:hover {
+  background: linear-gradient(135deg, #20c997, #63e6be);
+
+}
+
+.gallery-page .fs-btn {
+  background: linear-gradient(135deg, #20c997, #63e6be);
+
+  color: white;
+}
+
+.gallery-page .fs-btn:hover {
+  background: linear-gradient(135deg, #20c997, #63e6be);
+
+}
+
+/* Exit button in fullscreen */
+.gallery-page .exit-btn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  width: 35px;
+  height: 35px;
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  font-size: 1rem;
+  font-weight: bold;
+  line-height: 35px;
+  text-align: center;
+  cursor: pointer;
+  display: none;
+  /* show only in fullscreen */
+  z-index: 20;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.gallery-page .exit-btn:hover {
+  background: rgba(0, 0, 0, 0.8);
+  transform: scale(1.1);
+}
+
+/* ---------- RESPONSIVE FIXES ---------- */
+@media (max-width: 600px) {
+  .gallery-page .header {
+    gap: 8px;
+    padding: 8px 10px;
+  }
+
+  .gallery-page .header h1 {
+    font-size: 1.2rem;
+    margin: 0 6px;
+  }
+
+  .gallery-page .home-btn,
+  .gallery-page .fs-btn {
+    font-size: 0.9rem;
+    padding: 6px 10px;
+  }
+}
+
+.gallery-page .gallery-controls {
+  transition: opacity 0.3s ease;
+}
+
+.gallery-page .gallery-controls.hidden {
+  opacity: 0;
+  pointer-events: none;
+  /* prevents accidental clicks when hidden */
+}
